@@ -1,0 +1,470 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Pizza Shop</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        background-image: url("p33.jpg");
+      }
+      .pizza-fact-alert {
+        background-color: #a51b1b; 
+        color: #000;
+        font-size: 16px; 
+        font-weight: bold; 
+        padding: 10px; 
+        border-radius: 5px; 
+        font-family: Arial, sans-serif; 
+      }
+      .background-image {
+        background: url("p33.jpg") no-repeat center center;
+        background-size: cover;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; 
+      }
+      .content {
+        text-align:center;
+        position: relative;
+        z-index: 1; 
+        color: #fff;
+        padding: 50px;
+      }
+      #shopname{
+        font-family:hand-lettered sans-serif ;
+        font-size:100px;
+      }
+      h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        font-family: Helvetica, sans-serif ;
+        font-weight: bold;
+      }
+      p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+      .button { 
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #ff5722;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: transfom 0.3s ease;
+      }
+      .button:hover {
+        background-color: #e64a19;
+        transform:scale(1.1);
+      }
+      .additional-content {
+        background-image: url("background.jpeg");
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        padding: 50px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        height: 400px;
+      }
+      .waviy {
+        position: relative;
+        -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+        font-size: 40px;
+      }
+      .waviy span {
+        font-family: "Alfa Slab One", cursive;
+        position: relative;
+        display: inline-block;
+        color: #fff;
+        text-transform: uppercase;
+        animation: waviy 1.5s infinite;
+        animation-delay: calc(0.1s * var(--i));
+      }
+      @keyframes waviy {
+        0%,
+        40%,
+        100% {
+          transform: translateY(0);
+        }
+        20% {
+          transform: translateY(-20px);
+        }
+      }
+      .pizza-images {
+        display: flex;
+        justify-content:space-around;
+        align-items: flex-start;
+        height: 80%; 
+        position: relative;
+        padding-top: 20px;
+      }
+      .pizza-item {
+        text-align: center;
+      }
+      .pizza-images img {
+        width: 250px;
+        height: 250px; 
+        border-radius: 10px; 
+        cursor: pointer; 
+        transition: transform 0.3s ease; 
+      }
+      .pizza-images img:hover {
+        transform: scale(1.1); 
+      }
+      .pizza-images .pizza-text {
+        position: absolute;
+        bottom: -10px; 
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        white-space: nowrap;
+        opacity: 0; 
+        pointer-events: none; 
+        transition: opacity 0.3s ease;
+        text-align: center;
+      }
+      .pizza-images .pizza-item:hover .pizza-text {
+        opacity: 1;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      .small-div {
+        height: 50px; 
+      }
+      .bottom-half {
+        display: flex;
+        justify-content: space-between;
+        height: 50%;
+        padding: 20px;
+        background-image: url("background.jpeg");
+        background-size: cover;
+        color: #fff;
+        text-align: center;
+      }
+      .half {
+        width: 50%;
+        height: 100%;
+        position: relative;
+      }
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%; 
+        height: 80%; 
+        margin: 0 auto; 
+        border: 5px solid black; 
+        box-sizing: border-box; 
+        overflow: hidden; 
+      }
+      .image-container img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+      }
+      .video {
+        position: relative;
+        overflow: hidden;
+      }
+      .video video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        }
+      .drink-image-container {
+        display: flex;
+        justify-content:center;
+        align-items: center;
+}
+.drink-image-container img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border:5px solid white;
+    margin: 0 100px;
+}
+@keyframes spin {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+.drink-image-container img:hover {
+    animation: spin 1.5s linear 1; 
+}
+.text1 {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    color: white; 
+}
+.text1 p {
+    font-size: 40px; 
+    font-family:Georgia; 
+    background-color:#141722;
+    margin:0 130px;
+    transition:transform 0.3s ease;
+}
+.text1 p:hover{
+    transform:scale(1.1);
+}
+.first {
+    margin-left: 100px; 
+}
+.second {
+    margin: 0 10px; 
+}
+.third {
+    margin-right: 20px; 
+}
+.dining-text {
+    background-color: black;
+    text-align: center;
+}
+.dining-text p {
+    font-size: 40px;
+    color: white; 
+    font-family: cursive;
+    padding: 20px; 
+    border:2px solid white;
+}
+.filler{
+    background-color:black;
+    height:100px;
+    margin-top:0px;
+}
+.wrapper{
+    margin-top:0px;
+    background-color:black;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+    grid-gap:5px;
+}
+img{
+    width:100%;
+    border-radius:20px;
+}
+.box{
+    padding:10px;
+}
+.form-container {
+    background-color: #000;
+    padding: 20px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+label {
+    display: inline-block;
+    color: #fff;
+    width:150px;
+    font-family:cursive;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 150px;
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    color: #000;
+}
+button {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+h2{
+    color:white;
+    font-size:16px;
+}
+    </style>
+  </head>
+  <body>
+    <div class="background-image"></div>
+    <div class="content">
+      <h1 id="shopname"><i>Slice Delight</i></h1>
+      <h1>Welcome to Our Pizza Shop</h1>
+      <p>Explore our delicious pizza menu and place your order now!</p>
+      <a href="#" class="button">Order Now --></a>
+    </div>
+    <div class="additional-content">
+      <h2 class="waviy">
+        <span style="--i: 1">P</span>
+        <span style="--i: 2">i</span>
+        <span style="--i: 3">z</span>
+        <span style="--i: 4">z</span>
+        <span style="--i: 5">a</span>
+        <span style="--i: 6">&nbsp;</span>
+        <span style="--i: 7">V</span>
+        <span style="--i: 8">a</span>
+        <span style="--i: 9">r</span>
+        <span style="--i: 10">i</span>
+        <span style="--i: 11">e</span>
+        <span style="--i: 12">t</span>
+        <span style="--i: 13">i</span>
+        <span style="--i: 14">e</span>
+        <span style="--i: 15">s</span>
+      </h2>
+      <div class="pizza-images">
+        <div class="pizza-item">
+          <img src="italy2.jpg" alt="Italian Pizza" />
+          <div class="pizza-text">
+            Authentic Italian pizza with fresh ingredients and traditional
+            flavors
+          </div>
+        </div>
+        <div class="pizza-item">
+          <img src="mex1.jpg" alt="Mexican Pizza" />
+          <div class="pizza-text">
+            Spicy Mexican pizza with jalapenos, salsa, and cheese
+          </div>
+        </div>
+        <div class="pizza-item">
+          <img src="farmmm.jpeg" alt="Farm Pizza" />
+          <div class="pizza-text">
+            Farm-fresh pizza with a variety of vegetables and herbs
+          </div>
+        </div>
+        <div class="pizza-item">
+          <img src="am2.jpg" alt="American Pizza" />
+          <div class="pizza-text">
+            Classic American pizza loaded with pepperoni, cheese, and sauce
+          </div>
+        </div>
+      </div>
+      <div class="small-div"></div>
+    </div>
+    <div class="bottom-half">
+      <div class="half">
+        <video controls autoplay loop width="462.4" height="250.2">
+          <source src="pizza_pixbayyy.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="half">
+        <div class="image-container">
+          <img src="freepizzarem (1).png" alt="Delivery Boy" />
+        </div>
+      </div>
+    </div>
+    <div class="drink-image-container">
+        <img src="drinks.jpg" alt="Drinks" />
+        <img src="chocolate.jpeg" alt="Chocolate" />
+        <img src="garlic bread.jpeg" alt="Garlic Bread">
+    </div>
+    <div class="text1">
+        <p class="first">Drinks</p>
+        <p class="second">Desserts</p>
+        <p class="third">Sides</p>
+    </div>
+        <div class="dining-text">
+            <p>Our Dining Places</p>
+        </div>
+        <div class="filler"></div>
+     <div class="wrapper">
+        <div class="box"><img src="photo6.jpeg"></div>
+        <div class="box"><img src="photo3.jpg"></div>
+        <div class="box"><img src="photo5.jpeg"></div>
+     </div>
+     <div class="form-container">
+        <h5>Contact Us</h5>
+        <form>
+            <div class="form-group">
+                <label for="name">Enter Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="directions">Directions:</label>
+              <input type="text" id="directions" name="directions" required>
+          </div>
+            <div class="form-group">
+                <label for="response">Response:</label>
+                <textarea id="response" name="response" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>   
+    <script>
+      window.onload = function () {
+        alert("Welcome to Pizza Shop!");
+      };
+    </script>
+    <script>
+      function displayRandomPizzaFact() {
+        const pizzaFacts = [
+          "The world's largest pizza was 122 feet in diameter.",
+          "The first pizza delivery was made in 1889 to Queen Margherita of Italy.",
+          "Americans consume on average 23 pounds of pizza per person per year.",
+          "The Hawaiian pizza was invented in Canada.",
+          "The most expensive pizza ever made cost $12,000.",
+        ];
+        const randomFact =
+          pizzaFacts[Math.floor(Math.random() * pizzaFacts.length)];
+        alert(randomFact);
+      }
+      window.onload = function () {
+        displayRandomPizzaFact();
+      };
+    </script>
+    <script>
+      function trackUserInteraction(eventType) {
+        console.log("User interaction:", eventType);
+      }
+      document.addEventListener("click", function () {
+        trackUserInteraction("click");
+      });
+      document.addEventListener("scroll", function () {
+        trackUserInteraction("scroll");
+      });
+    </script>
+        <script type="text/javascript">
+            (function (d, s, id) {
+              var js, el = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s);
+              js.async = true;
+              js.src = 'https://s3.ap-south-1.amazonaws.com/conferbot.defaults/dist/v1/widget.min.js';
+              js.id = id;
+              js.charset = 'UTF-8';
+              el.parentNode.insertBefore(js, el);
+              js.onload = function () {
+                var w = window.ConferbotWidget("65decd60718429e8186b8d94", "live_chat");
+              };
+            })(document, 'script', 'conferbot-js');
+          </script>  
+  </body>
+</html>
